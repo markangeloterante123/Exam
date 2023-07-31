@@ -1,0 +1,2727 @@
+@import 'fonts'
+
+$primary = #00AAAD
+$secondary = #F2A02A
+$black = #111
+$white = #FFF
+$info = #438EFF
+$cancel = #EA5455
+$gray = #7A7A7A
+$gray_v2 = #F6F6F6
+$gray_v3 = #C3C3C3
+$gray_v4 = #E2E2E2
+$success = #5cbf69
+$warning = #ffc800
+
+html
+  -webkit-text-size-adjust: none
+  -webkit-font-smoothing: subpixel-antialiased
+  backface-visibility: hidden
+  brandon_regular(18px, false)
+
+body
+  &::-webkit-scrollbar
+    width: 3px
+    background-color: $gray_v2
+  &::-webkit-scrollbar-track
+    box-shadow: none
+  &::-webkit-scrollbar-thumb
+    background-color: $primary
+    border: 6px solid transparentify($black, 0)
+
+::-webkit-scrollbar-track
+  -webkit-box-shadow: inset 0 0 6px transparentify($black, 0.1)
+  background-color: $gray_v2
+  border-radius: 10px
+::-webkit-scrollbar
+  width: 3px
+  height: 5px
+  background-color: $gray_v2
+::-webkit-scrollbar-thumb
+  border-radius: 10px
+  background-color: $primary
+
+body
+  overflow-x: hidden
+  background-color: $gray_v2
+  &.cms
+  &.no_click
+    pointer-events: none
+  &.no_scroll
+    overflow-y: hidden
+
+*,
+*:before,
+*:after
+  user-select: none
+  box-sizing: border-box
+  margin: 0
+
+button
+  outline: none
+
+input,
+input:before,
+input:after,
+textarea,
+textarea:before,
+textarea:after,
+select,
+select:before,
+select:after
+  user-select: initial
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+  -webkit-appearance: none
+  margin: 0
+
+textarea
+  resize: vertical
+
+a
+  text-decoration: none
+
+h1,
+h2,
+h3,
+h4,
+h5
+  font-weight: normal
+
+img
+  height: auto
+  vertical-align: middle
+
+table
+  width: 100%
+  border-collapse: collapse
+
+.hidden
+  display: none
+
+.o_hidden
+  position: absolute
+  opacity: 0
+  visibility: hidden
+  z-index: -1
+
+.none
+  pointer-events: none
+
+.quill-editor iframe,
+.quill-editor video
+  pointer-events: none
+
+@page
+  size: landscape
+  margin: 0cm
+
+@media print
+  body
+    margin: 0.75cm
+    -webkit-print-color-adjust: exact
+
+svg,
+span
+  vertical-align: middle
+
+.pointer
+  cursor: pointer
+
+.mb
+  margin-bottom: 30px
+  &.seventy
+    margin-bottom: 70px
+  &.twenty
+    margin-bottom: 20px !important
+  &.ten
+    margin-bottom: 10px !important
+.mr
+  margin-right: 30px
+  &.ten
+    margin-right: 10px
+  &.twenty
+    margin-right: 20px !important
+.ml
+  margin-left: 30px
+  &.ten
+    margin-left: 10px
+  &.twenty
+    margin-left: 20px !important
+.nmb
+  margin-bottom: 0 !important
+.nmr
+  margin-right: 0 !important
+
+.editor
+  border: 1px solid $gray
+  background-color: $white
+  .ql-toolbar.ql-snow
+    border: none
+    border-bottom: 1px solid $gray
+  .ql-container.ql-snow
+    border: none
+    border-top: 1px solid $gray
+  .ql-editor
+    padding: 15px
+    brandon_regular(16px, false)
+
+.scrollable_content
+  height: 100%
+  max-height: 300px
+  overflow-y: auto
+  overflow-x: hidden
+
+/**
+ * Root */
+.__db
+  position: relative
+  .swallower
+    position: sticky
+    top: 0
+    z-index: 1
+    height: 85px
+    width: 100%
+    pointer-events: none
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(41%,#fff),color-stop(95%,hsla(0,0%,100%,.11)),to(hsla(0,0%,100%,0)))
+  &.full
+    #header
+      max-width: calc(100% - 130px)
+      transition: .3s ease-in-out
+    #footer
+      max-width: calc(100% - 70px)
+      transition: .3s ease-in-out
+    #dashboard
+      margin-left: 70px
+      transition: .3s ease-in-out
+    .form
+      .buttons
+        &.fixed
+          max-width: calc(100% - 70px)
+          transition: .3s ease-in-out
+  #dashboard
+    position: relative
+    padding: 30px 30px 60px
+    margin-left: 260px
+    transition: .3s ease-in-out
+    &.error
+      .wrapper
+        display: flex
+        flex-flow: column wrap
+        align-items: center
+        justify-content: center
+        height: calc(100vh - 205px)
+        .icon
+          img
+            width: 75px
+        .title
+          margin-top: 10px
+          brandon_bold(26px, true)
+        .subtitle
+          margin: 10px 0 20px
+          brandon_regular(18px, false)
+
+/**
+ * Login */
+#login
+  position: relative
+  height: 100vh
+  background-color: $primary
+  .wrapper
+    position: absolute
+    top: 50%
+    left: 0
+    right: 0
+    width: 100%
+    max-width: 1280px
+    margin: 0 auto
+    display: flex
+    flex-flow: row wrap
+    justify-content: flex-start
+    border-radius: 10px
+    transform: translateY(-50%)
+    box-shadow: 0 0 30px transparentify($black, 0.3)
+    .left
+      flex: 0 0 60%
+      img
+        border-radius: 10px 0 0 10px
+        width: 100%
+        height: 450px
+        object-fit: cover
+    .right
+      border-radius: 0 10px 10px 0
+      flex: 1 0 5%
+      position: relative
+      background-color: $white
+      .overlay
+        position: absolute
+        top: 50%
+        left: 0
+        right: 0
+        padding: 30px
+        transform: translateY(-50%)
+        h2
+          brandon_medium(32px, false)
+          color: $black
+        h3
+          brandon_light(18px, false)
+          color: $gray
+          margin: 10px 0 20px
+        .action
+          margin-top: 30px
+
+/**
+ * Header */
+#header
+  position: fixed
+  top: 30px
+  z-index: 2
+  right: 30px
+  width: 100%
+  max-width: calc(100% - 320px)
+  display: flex
+  flex-flow: row wrap
+  align-items: center
+  justify-content: space-between
+  border-radius: 5px
+  background-color: $white
+  box-shadow: 0 0 30px transparentify($black, 0.1)
+  transition: .3s ease-in-out
+  .header_nav
+    display: flex
+    flex-flow: row wrap
+    align-items: center
+    justify-content: space-between
+    padding: 0 20px
+    .title
+      brandon_bold(18px, true)
+      color: $secondary
+      letter-spacing: 0.25px
+      padding-right: 10px
+    #breadcrumb
+      padding-left: 10px
+      border-left: 1px solid #E2E2E2
+  .header_select
+    position: relative
+    border-left: 1px solid #E2E2E2
+    user-select: none
+    &::before
+      content: ''
+      position: absolute
+      top: 50%
+      right: calc(0% + 15px)
+      width: 0
+      cursor: pointer
+      border-left: 7px solid transparent
+      border-right: 7px solid transparent
+      border-top: 7px solid $primary
+      transform: translateY(-50%) rotateX(0deg)
+      transition: .3s ease-in-out
+    .header_user
+      padding: 10px 40px 10px 15px
+      display: flex
+      flex-flow: row wrap
+      align-items: center
+      cursor: pointer
+      img
+        display: inline-block
+        margin-right: 5px
+        width: 33px
+        height: 33px
+        border-radius: 50%
+        object-fit: cover
+        object-position: center
+        border: 2px solid $secondary
+      .user_picture
+        position: relative
+        text-transform: uppercase
+        width: 35px
+        height: 35px
+        background-color: $primary
+        border-radius: 50%
+        margin-right: 10px
+        .overlay
+          position: absolute
+          top: 50%
+          left: 0
+          right: 0
+          text-align: center
+          transform: translateY(-50%)
+          color: $white
+          brandon_regular(14px, false)
+      .user_name
+        brandon_regular(16px, false)
+        color: $black
+    .user_select
+      position: absolute
+      right: 0
+      top: calc(100% + 30px)
+      z-index: 1
+      width: 300px
+      border-radius: 5px
+      background-color: $white
+      opacity: 0
+      visibility: hidden
+      box-shadow: 15px 25px 40px transparentify($black, 0.05)
+      transition: all .2s ease-in-out
+      a
+        text-decoration: none
+        outline: none
+        display: block
+      .select_header
+        display: flex
+        flex-flow: row wrap
+        align-items: center
+        justify-content: space-between
+        padding: 20px
+        background-color: $secondary
+        border-radius: 5px 5px 0 0
+        .select_info
+          .header_name
+            brandon_regular(16px, false)
+            color: $white
+          .header_role
+            brandon_light(14px, false)
+            color: #F8F8FB
+            margin-top: 5px
+        .header_studio
+          .action_btn
+            flex: 0 0 auto
+      .select_footer
+        display: flex
+        justify-content: space-between
+        .select_item
+          position: relative
+          brandon_regular(14px, false)
+          color: $black
+          padding: 10px 15px
+          transition: .3s ease-in-out
+          &.account
+            span
+              padding-left: 10px
+          &.logout
+            span
+              padding-right: 10px
+          &:hover
+            color: $primary
+            transition: .3s ease-in-out
+
+    &.active
+      &::before
+        transform: translateY(-50%) rotateX(180deg)
+        transition: .3s ease-in-out
+      .user_select
+        top: 100%
+        visibility: visible
+        opacity: 1
+        transition: all .2s ease-in-out
+
+/**
+ * Sidebar */
+#sidebar
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 7
+  width: 100%
+  max-width: 260px
+  height: 100vh
+  background-color: $white
+  box-shadow: 0 0 30px transparentify($black, 0.1)
+  border-right: 5px solid $secondary
+  transition: .3s ease-in-out
+  &.floating
+    max-width: 65px
+    .top
+      h2
+        position: absolute
+        top: -9999999px
+        left: -9999999px
+        z-index: -2
+        brandon_bold(0px, false)
+      .toggle
+        opacity: 0
+        visibility: hidden
+        transition: .1s ease-in-out
+    .bottom
+      .list
+        .item
+          .link
+            brandon_regular(0px, false)
+            span
+              position: absolute
+              top: -9999999px
+              left: -9999999px
+              z-index: -1
+            &.parent
+              &::after
+                opacity: 0
+                visibility: hidden
+                transition: .3s ease-in-out
+          .sub
+            .sub_list
+              .sub_item
+                .sub_link
+                  brandon_regular(0px, false)
+                  span
+                    position: absolute
+                    top: -9999999px
+                    left: -9999999px
+                    z-index: -1
+    &.hovered
+      max-width: 260px
+      transition: .3s ease-in-out
+      .top
+        justify-content: flex-start
+        h2
+          position: static
+          left: 0
+          z-index: 1
+          brandon_bold(16px, false)
+        .toggle
+          opacity: 1
+          visibility: visible
+      .bottom
+        .list
+          .item
+            .link
+              brandon_regular(16px, false)
+              justify-content: flex-start
+              span
+                position: static
+                left: 0
+                z-index: 1
+              &.parent
+                &::after
+                  opacity: 1
+                  visibility: visible
+                  transition: .3s ease-in-out
+            .sub
+              .sub_list
+                .sub_item
+                  .sub_link
+                    brandon_regular(16px, false)
+                    justify-content: flex-start
+                    span
+                      position: static
+                      left: 0
+                      z-index: 1
+  .top
+    position: relative
+    padding: 20px 7px
+    display: flex
+    flex-flow: row wrap
+    align-items: center
+    justify-content: flex-start
+    transition: .3s ease-in-out .3s
+    img
+      width: 50px
+      height: auto
+      transition: .3s ease-in-out .3s
+    h2
+      padding-left: 10px
+      brandon_bold(16px, false)
+      color: $gray
+      transition: .3s ease-in-out .3s
+    .toggle
+      position: absolute
+      top: 50%
+      right: 10px
+      opacity: 1
+      z-index: 2
+      visibility: visible
+      transform: translateY(-50%)
+      transition: .3s ease-in-out .3s
+      svg
+        color: $primary
+  .shadow
+    position: absolute
+    margin-top: -20px
+    margin-left: -5px
+    z-index: 2
+    height: 60px
+    width: 100%
+    pointer-events: none
+    -webkit-filter: blur(5px)
+    filter: blur(5px)
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(41%,#fff),color-stop(95%,hsla(0,0%,100%,.11)),to(hsla(0,0%,100%,0)))
+  .bottom
+    height: 100%
+    overflow-y: auto
+    padding: 30px 10px 20px
+    .list
+      list-style: none
+      padding: 0
+      margin: 0
+      .item
+        margin-bottom: 5px
+        &:last-child
+          margin-bottom: 0
+        &.toggled
+          .link
+            background-color: $gray_v2
+            transition: .3s ease-in-out
+            & ~ .sub
+              opacity: 1
+              transition: .3s ease-in-out
+            &.parent
+              &::after
+                transform: translateY(-50%) rotateX(180deg)
+                transition: .3s ease-in-out
+        .link
+          display: flex
+          flex-flow: row wrap
+          align-items: center
+          justify-content: flex-start
+          position: relative
+          z-index: 1
+          padding: 7.5px 9px
+          brandon_regular(16px, false)
+          color: $gray
+          border-radius: 5px
+          box-shadow: 0 0 20px transparent
+          background-color: transparent
+          transition: .3s ease-in-out
+          &.parent
+            &.exact,
+            &.active
+              color: $gray
+              box-shadow: 0 0 20px transparent
+              padding: 7.5px 10px
+              background-color: $gray_v2
+              transition: .3s ease-in-out
+              svg
+                &.icon
+                  path
+                    opacity: 1
+                    fill: $primary
+                    transition: .3s ease-in-out
+              &::before
+                opacity: 0
+                visibility: hidden
+                transition: .3s ease-in-out
+            &::after
+              content: ''
+              pointer-events: none
+              position: absolute
+              top: 50%
+              right: 10px
+              z-index: 1
+              border-top: 7px solid $primary
+              border-left: 7px solid transparent
+              border-right: 7px solid transparent
+              transform: translateY(-50%) rotateX(0deg)
+              transition: .3s ease-in-out
+          .link_icon
+            position: inherit
+            z-index: 1
+            pointer-events: none
+            flex: 0 0 auto
+            padding-bottom: 3px
+          svg
+            position: inherit
+            z-index: 1
+            &.icon
+              path
+                opacity: 1
+                transition: .3s ease-in-out
+          span
+            pointer-events: none
+            display: inline-block
+            padding-left: 10px
+            position: inherit
+            z-index: 1
+            transform: translateX(0)
+            transition: .3s ease-in-out
+          &::before
+            content: ''
+            position: absolute
+            pointer-events: none
+            top: 0
+            left: 0
+            right: 0
+            bottom: 0
+            opacity: 0
+            z-index: 0
+            visibility: hidden
+            background-color: $primary
+            border-radius: 5px
+            transition: .3s ease-in-out
+          &:hover
+            padding: 7.5px 10px 7.5px 15px
+            background-color: $gray_v2
+            transition: .3s ease-in-out
+          &.active,
+          &.exact
+            color: $white
+            box-shadow: 0 0 20px transparentify($primary, 0.5)
+            transition: .3s ease-in-out
+            svg
+              &.icon
+                path
+                  fill: $white
+                  transition: .3s ease-in-out
+            &::before
+              opacity: 1
+              visibility: visible
+              transition: .3s ease-in-out
+        .sub
+          display: block
+          height: 0px
+          overflow: hidden
+          opacity: 0
+          transition: .3s ease-in-out
+          .sub_list
+            list-style: none
+            padding: 0
+            margin: 0
+            .sub_item
+              margin-bottom: 5px
+              &:last-child
+                margin-bottom: 0
+              .sub_link
+                display: flex
+                flex-flow: row wrap
+                align-items: center
+                justify-content: flex-start
+                position: relative
+                padding: 7.5px 15px
+                brandon_regular(16px, false)
+                color: $gray
+                border-radius: 5px
+                box-shadow: 0 0 20px transparent
+                transition: .3s ease-in-out
+                .sub_link_icon
+                  position: relative
+                  z-index: 1
+                  flex: 0 0 auto
+                  padding-bottom: 3px
+                svg
+                  width: 10px
+                  height: 10px
+                  position: inherit
+                  z-index: 1
+                  &.icon
+                    circle
+                      opacity: 1
+                      transition: .3s ease-in-out
+                span
+                  display: inline-block
+                  padding-left: 10px
+                  position: inherit
+                  z-index: 1
+                  transform: translateX(0)
+                  transition: .3s ease-in-out
+                &::before
+                  content: ''
+                  position: absolute
+                  top: 0
+                  left: 0
+                  right: 0
+                  bottom: 0
+                  opacity: 0
+                  z-index: 0
+                  visibility: hidden
+                  background-color: $primary
+                  border-radius: 5px
+                  transition: .3s ease-in-out
+                &:hover
+                  padding: 7.5px 10px 7.5px 20px
+                  transition: .3s ease-in-out
+                &.exact,
+                &.active
+                  color: $white
+                  box-shadow: 0 0 20px transparentify($primary, 0.5)
+                  transition: .3s ease-in-out
+                  svg
+                    &.icon
+                      circle
+                        stroke: $white
+                        transition: .3s ease-in-out
+                  &::before
+                    opacity: 1
+                    visibility: visible
+                    transition: .3s ease-in-out
+
+/**
+ * Footer */
+#footer
+  position: fixed
+  bottom: 0
+  z-index: 2
+  right: 0
+  width: 100%
+  max-width: calc(100% - 260px)
+  display: flex
+  flex-flow: row wrap
+  align-items: center
+  padding: 10px 30px
+  background-color: $primary
+  justify-content: space-between
+  transition: .3s ease-in-out
+  .label
+    color: $white
+    brandon_regular(14px, false)
+
+/**
+ * Breadcrumb */
+#breadcrumb
+  &.left
+    .list
+      justify-content: flex-start
+  &.right
+    .list
+      justify-content: flex-end
+  &.center
+    .list
+      justify-content: center
+  .list
+    list-style: none
+    padding: 0
+    margin: 0
+    display: flex
+    flex-flow: row wrap
+    align-items: center
+    justify-content: flex-start
+    .item
+      display: flex
+      flex-flow: row wrap
+      align-items: center
+      .link
+        color: $black
+        brandon_regular(14px, true)
+        &.nuxt-link-active
+          color: $primary
+        &.nuxt-link-exact-active
+          color: $black
+        svg
+          display: block
+      .separator
+        color: $gray_v3
+        padding: 0 5px
+        brandon_regular(24px, false)
+
+/**
+ * Alert */
+#alert
+  &.primary
+    background-color: transparentify($primary, 0.2)
+    .wrapper
+      p
+        color: $primary
+  &.secondary
+    background-color: transparentify($secondary, 0.2)
+    .wrapper
+      p
+        color: $secondary
+  &.success
+    background-color: transparentify($success, 0.2)
+    .wrapper
+      p
+        color: $success
+  &.cancel
+    background-color: transparentify($cancel, 0.2)
+    .wrapper
+      p
+        color: $cancel
+  &.warning
+    background-color: transparentify($warning, 0.2)
+    .wrapper
+      p
+        color: $warning
+  &.info
+    background-color: transparentify($info, 0.2)
+    .wrapper
+      p
+        color: $info
+  &.dark
+    background-color: transparentify($gray, 0.2)
+    .wrapper
+      p
+        color: $gray
+  .wrapper
+    padding: 10px
+    border-radius: 5px
+    p
+      brandon_medium(16px, false)
+
+/**
+ * Toast */
+#toast_wrapper
+  position: fixed
+  top: 0
+  right: 0
+  width: 400px
+  height: 100vh
+  z-index: 4
+  background-color: transparent
+  padding: 20px
+  list-style: none
+  overflow-y: auto
+  overflow-x: hidden
+  pointer-events: none
+  &::-webkit-scrollbar-track
+    -webkit-box-shadow: inset 0 0 6px transparentify($black, 0.1)
+    background-color: $gray_v2
+    border-radius: 10px
+  &::-webkit-scrollbar
+    width: 5px
+    height: 10px
+    background-color: $gray_v2
+  &::-webkit-scrollbar-thumb
+    border-radius: 10px
+    background-color: $primary
+  #toast
+    position: relative
+    right: 0
+    margin-bottom: 20px
+    transform: translateX(0px)
+    animation: right_slide 1s
+    .close
+      position: absolute
+      top: -3px
+      right: -3px
+      display: inline-block
+      padding: 5px 10px
+      opacity: 1
+      border-radius: 5px
+      brandon_regular(20px, false)
+      background-color: $primary
+      color: $white
+      box-shadow: 0 0 10px transparentify($black, 0.2)
+      z-index: 2
+      line-height: 1
+      pointer-events: auto
+      transition: .3s ease-in-out
+      &:hover
+        top: -6px
+        right: -6px
+    .wrapper
+      background-color: $white
+      border-left: 5px solid $primary
+      box-shadow: 0 0 30px transparentify($black, 0.2)
+      padding: 20px
+      p
+        color: $primary
+        brandon_medium(18px, false)
+    &.secondary
+      .close
+        background-color: $secondary
+      .wrapper
+        border-left: 5px solid $secondary
+        p
+          color: $secondary
+    &.success
+      .close
+        background-color: $success
+      .wrapper
+        border-left: 5px solid $success
+        p
+          color: $success
+    &.cancel
+      .close
+        background-color: $cancel
+      .wrapper
+        border-left: 5px solid $cancel
+        p
+          color: $cancel
+    &.warning
+      .close
+        background-color: $warning
+      .wrapper
+        border-left: 5px solid $warning
+        p
+          color: $warning
+    &.info
+      .close
+        background-color: $info
+      .wrapper
+        border-left: 5px solid $info
+        p
+          color: $info
+    &.dark
+      .close
+        background-color: $gray
+      .wrapper
+        border-left: 5px solid $gray
+        p
+          color: $gray
+    &.last-child
+      margin-bottom: 0
+
+/**
+ * Tabs */
+#tabs
+  .parent
+    ul
+      list-style: none
+      padding: 0
+      margin: 0
+      display: flex
+      flex-flow: row wrap
+      align-items: flex-start
+      justify-content: flex-start
+      li
+        padding: 15px 20px
+        brandon_bold(14px, true)
+        color: $gray
+        border-bottom: 5px solid $gray
+        background-color: $white
+        transition: .3s ease-in-out
+        &.active
+          color: $white
+          border-bottom: 5px solid $secondary
+          background-color: $primary
+          transition: .3s ease-in-out
+        &:hover
+          color: $primary
+          border-bottom: 5px solid $primary
+          background-color: transparentify($primary, 0.2)
+          transition: .3s ease-in-out
+          &.active
+            color: $white
+            border-bottom: 5px solid $secondary
+            background-color: $primary
+            transition: .3s ease-in-out
+
+/**
+ * Collapse */
+.collapse
+  &.toggled
+    .item_top
+      &.top_box
+        padding-bottom: 20px
+        transition: .3s ease-in-out
+      .arrow
+        top: calc(50% - 10px)
+        transform: translateY(-50%) rotateX(180deg)
+        transition: .3s ease-in-out
+    .item_bottom
+      height: 100%
+      opacity: 1
+      visibility: visible
+      transition: .3s ease-in-out
+  .item_top
+    position: relative
+    &.top_box
+      padding-bottom: 0
+      transition: .3s ease-in-out
+    .arrow
+      content: ''
+      position: absolute
+      top: 50%
+      right: 0
+      border-left: 10px solid transparent
+      border-right: 10px solid transparent
+      border-top: 10px solid $secondary
+      transform: translateY(-50%) rotateX(0deg)
+      transition: .3s ease-in-out
+  .item_bottom
+    height: 0px
+    opacity: 0
+    visibility: hidden
+    transition: .3s ease-in-out
+
+/**
+ * Buttons */
+.button
+  display: inline-block
+  color: $white
+  brandon_medium(14px, true)
+  padding: 10px 15px
+  border-radius: 10px
+  box-shadow: 0 0 20px transparent
+  text-align: center
+  transform: translateY(0)
+  transition: .3s ease-in-out
+  &.rounded
+    border-radius: 50px
+  &.rectangle
+    border-radius: 0px
+  &:hover
+    &.flat
+      box-shadow: none
+  &.primary
+    border: 1px solid $primary
+    background-color: $primary
+    &.outline
+      background-color: transparent
+      color: $primary
+    &.flat
+      color: $primary
+      border: none
+      background-color: transparent
+    &:hover
+      box-shadow: 0 8px 20px -8px transparentify($primary, 0.5)
+      &.outline
+        color: $white
+        background-color: $primary
+      &.flat
+        background-color: transparentify($primary, 0.2)
+  &.secondary
+    border: 1px solid $secondary
+    background-color: $secondary
+    &.outline
+      background-color: transparent
+      color: $secondary
+    &.flat
+      color: $secondary
+      border: none
+      background-color: transparent
+    &:hover
+      box-shadow: 0 8px 20px -8px transparentify($secondary, 0.5)
+      &.outline
+        color: $white
+        background-color: $secondary
+      &.flat
+        background-color: transparentify($secondary, 0.2)
+  &.success
+    border: 1px solid $success
+    background-color: $success
+    &.outline
+      background-color: transparent
+      color: $success
+    &.flat
+      color: $success
+      border: none
+      background-color: transparent
+    &:hover
+      box-shadow: 0 8px 20px -8px transparentify($success, 0.5)
+      &.outline
+        color: $white
+        background-color: $success
+      &.flat
+        background-color: transparentify($success, 0.2)
+  &.cancel
+    border: 1px solid $cancel
+    background-color: $cancel
+    &.outline
+      background-color: transparent
+      color: $cancel
+    &.flat
+      color: $cancel
+      border: none
+      background-color: transparent
+    &:hover
+      box-shadow: 0 8px 20px -8px transparentify($cancel, 0.5)
+      &.outline
+        color: $white
+        background-color: $cancel
+      &.flat
+        background-color: transparentify($cancel, 0.2)
+  &.warning
+    border: 1px solid $warning
+    background-color: $warning
+    &.outline
+      background-color: transparent
+      color: $warning
+    &.flat
+      color: $warning
+      border: none
+      background-color: transparent
+    &:hover
+      box-shadow: 0 8px 20px -8px transparentify($warning, 0.5)
+      &.outline
+        color: $white
+        background-color: $warning
+      &.flat
+        background-color: transparentify($warning, 0.2)
+  &.info
+    border: 1px solid $info
+    background-color: $info
+    &.outline
+      background-color: transparent
+      color: $info
+    &.flat
+      color: $info
+      border: none
+      background-color: transparent
+    &:hover
+      box-shadow: 0 8px 20px -8px transparentify($info, 0.5)
+      &.outline
+        color: $white
+        background-color: $info
+      &.flat
+        background-color: transparentify($info, 0.2)
+  &.dark
+    border: 1px solid $gray
+    background-color: $gray
+    &.outline
+      background-color: transparent
+      color: $gray
+    &.flat
+      color: $gray
+      border: none
+      background-color: transparent
+    &:hover
+      box-shadow: 0 8px 20px -8px transparentify($gray, 0.5)
+      &.outline
+        color: $white
+        background-color: $gray
+      &.flat
+        background-color: transparentify($gray, 0.2)
+
+/**
+ * Avatar */
+.avatar
+  position: relative
+  width: 75px
+  height: 75px
+  border-radius: 50%
+  &.primary
+    background-color: transparentify($primary, 0.2)
+  &.secondary
+    background-color: transparentify($secondary, 0.2)
+  &.success
+    background-color: transparentify($success, 0.2)
+  &.cancel
+    background-color: transparentify($cancel, 0.2)
+  &.warning
+    background-color: transparentify($warning, 0.2)
+  &.info
+    background-color: transparentify($info, 0.2)
+  &.dark
+    background-color: transparentify($gray, 0.2)
+  .overlap
+    position: absolute
+    top: 50%
+    left: 0
+    right: 0
+    text-align: center
+    margin: 0 auto
+    transform: translateY(-50%)
+
+/**
+ * Form */
+.form
+  position: relative
+  // Gallery
+  .gallery
+    padding: 0
+    list-style: none
+    li
+      margin-bottom: 20px
+      padding-bottom: 20px
+      border-bottom: 2px solid #e2e2e2
+      &:last-child
+        margin-bottom: 0
+        padding-bottom: 0
+        border-bottom: unset
+  &.flex
+    flex: 1 0 auto
+  .validate
+    position: absolute
+    top: calc(100% + 5px)
+    background-color: $cancel
+    color: $white
+    brandon_regular(14px, false)
+    z-index: 1
+    padding: 5px 10px
+    border-radius: 5px
+    user-select: none
+    right: 0
+    &::before
+      content: ""
+      position: absolute
+      bottom: calc(100% - 1px)
+      width: 0
+      height: 0
+      border-left: 7px solid transparent
+      border-right: 7px solid transparent
+      border-bottom: 7px solid $cancel
+      right: 17px
+      z-index: 1
+  .group_inline
+    position: relative
+    display: flex
+    flex-flow: row wrap
+    align-items: flex-start
+    justify-content: flex-start
+    margin-bottom: 20px
+    &.no_align
+      align-items: unset
+    &.between
+      justify-content: space-between
+    &.one
+      .group
+        flex: 0 0 100%
+    &.two
+      justify-content: space-between
+      .group
+        flex: 0 0 49.22%
+    &.three
+      justify-content: space-between
+      .group
+        flex: 0 0 32.33%
+    &.four
+      justify-content: space-between
+      .group
+        flex: 0 0 24.33%
+    .group
+      flex: 0 0 auto
+      margin-bottom: 0
+      &.mb
+        margin-bottom: 10px
+      &.radios
+        margin-right: 20px
+      .checkbox
+        margin-right: 20px
+      &:last-child
+        &.radios
+          margin-right: 0
+        .checkbox
+          margin-right: 0
+  .call_to_action
+    brandon_regular(14px, false)
+    color: $gray
+    transition: .3s ease-in-out
+    &:hover
+      color: $primary
+      transition: .3s ease-in-out
+  .disclaimer
+    margin: 5px 0 0
+    .violator
+      brandon_light(14px, false)
+      font-style: italic
+      color: $black
+      b
+        brandon_bold(14px, false)
+        color: $primary
+        font-style: italic
+  .preview_image
+    display: flex
+    flex-flow: row wrap
+    align-items: flex-start
+    margin: 30px 0 0
+    &.scrollable
+      padding: 20px 0
+      height: 100%
+      max-height: 300px
+      overflow-y: auto
+      overflow-x: hidden
+    &.two
+      .preview
+        flex: 0 0 calc(50% - 20px)
+    &.three
+      .preview
+        flex: 0 0 calc(33.33% - 20px)
+    &.four
+      .preview
+        flex: 0 0 calc(25% - 20px)
+    .preview
+      position: relative
+      z-index: 0
+      flex: 0 0 calc((100% / 6) - 20px)
+      margin: 0 10px 20px
+      animation: slide 1s
+      &.whole
+        flex: 0 0 100%
+        margin: 0
+      &.big
+        .item
+          padding: 40px 20px
+      img
+        width: 100%
+        height: 100px
+        object-fit: cover
+      .item
+        position: relative
+        width: 100%
+        padding: 20px
+        background-image: linear-gradient(45deg, $secondary, $primary)
+        span
+          position: absolute
+          top: 50%
+          left: 0
+          right: 0
+          padding: 0 10px
+          text-align: center
+          brandon_medium(16px, false)
+          color: $white
+          transform: translateY(-50%)
+      .image_close
+        position: absolute
+        top: -3px
+        right: -3px
+        display: inline-block
+        padding: 5px 10px
+        opacity: 1
+        border-radius: 5px
+        brandon_regular(20px, false)
+        line-height: 1
+        background-color: $cancel
+        color: $white
+        box-shadow: 0 0 10px transparentify($black, 0.2)
+        z-index: 2
+        cursor: pointer
+        transition: .3s ease-in-out
+        &:hover
+          top: -6px
+          right: -6px
+          transition: .3s ease-in-out
+  .file
+    position: relative
+    display: flex
+    flex-flow: row wrap
+    align-items: center
+    label
+      position: relative
+      display: block
+      width: 100%
+      padding: 80px 0
+      border: 2px dashed $primary
+      border-radius: 2px
+      p
+        brandon_regular(18px, false)
+        color: $gray
+        position: absolute
+        top: 50%
+        left: 0
+        right: 0
+        text-align: center
+        transform: translateY(-50%)
+        b
+          position: relative
+          color: $primary
+          &::before
+            content: ''
+            position: absolute
+            bottom: 0
+            left: 0
+            width: 0
+            height: 1px
+            opacity: 0
+            background-color: $primary
+            transition: .3s ease-in-out
+          &:hover
+            &::before
+              width: 100%
+              opacity: 1
+              transition: .3s ease-in-out
+  .form_image_group
+    margin-bottom: 20px
+    label
+      user-select: none
+      display: block
+      brandon_medium(12px, true)
+      font-weight: normal
+      color: $gray
+      margin-bottom: 2px
+    .action_image
+      position: absolute
+      bottom: 10px
+      opacity: 0
+    .action_image_label
+      position: relative
+      text-transform: none
+      cursor: pointer
+      width: 100%
+      background-color: $white
+      border: 1px solid $gray
+      padding: 10px 15px
+      brandon_regular(14px, false)
+      color: $gray
+      outline: none
+      transition: 0.3s ease-in-out
+      &::before
+        content: 'Browse'
+        color: $primary
+        position: absolute
+        top: 50%
+        right: 0
+        padding: 10px 20px
+        background-color: transparentify($primary, 0.2)
+        border-left: 1px solid $gray_v4
+        transform: translateY(-50%)
+        transition: .3s ease-in-out
+      &:hover,
+      &:focus
+        &::before
+          color: $white
+          background-color: $primary
+          border-left: 1px solid $primary
+          transition: .3s ease-in-out
+        & ~ .action_image_remove
+          border-left: 1px solid $black
+          border-right: 1px solid $black
+          transition: .3s ease-in-out
+      & ~ .action_image_remove
+        cursor: pointer
+        brandon_regular(14px, false)
+        color: $white
+        position: absolute
+        top: 50%
+        right: 0
+        padding: 10px 20px
+        background-color: $cancel
+        transform: translateY(-50%)
+        border-left: 1px solid $primary
+        border-right: 1px solid $primary
+        border-top: none
+        border-bottom: none
+        outline: none
+        box-shadow: 0 0 20px transparent
+        transition: 0.3s ease-in-out
+        &:hover,
+        &:focus
+          box-shadow: 0 0 20px transparentify($cancel, 0.5)
+          transition: .3s ease-in-out
+    .form_tags_group
+      display: flex
+      flex-flow: row wrap
+      align-items: flex-start
+      justify-content: space-between
+      margin-bottom: 20px
+      .preview_group
+        flex: 0 0 30%
+        img
+          width: 100%
+          height: 200px
+          background-color: $gray_v4
+          object-fit: contain
+      .tags_group
+        flex: 0 0 68%
+        .form_group
+          &:last-child
+            margin-bottom: 0
+  .radios
+    display: flex
+    flex-flow: row wrap
+    align-items: center
+    justify-content: flex-start
+    &.secondary
+      .radio
+        &:checked
+          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4gPGRlZnM+IDxzdHlsZT4uYXtmaWxsOiNmZmY7fS5ie2ZpbGw6I0ZGNDQwMDt9LmMsLmR7c3Ryb2tlOm5vbmU7fS5ke2ZpbGw6IzExMTt9PC9zdHlsZT4gPC9kZWZzPiA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzQ3IC0xMjM1KSI+IDxnIGNsYXNzPSJhIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNDcgMTIzNSkiPiA8cGF0aCBjbGFzcz0iYyIgZD0iTSA4IDE1LjUgQyAzLjg2NDQ5MDAzMjE5NjA0NSAxNS41IDAuNSAxMi4xMzU1MTA0NDQ2NDExMSAwLjUgOCBDIDAuNSAzLjg2NDQ5MDAzMjE5NjA0NSAzLjg2NDQ5MDAzMjE5NjA0NSAwLjUgOCAwLjUgQyAxMi4xMzU1MTA0NDQ2NDExMSAwLjUgMTUuNSAzLjg2NDQ5MDAzMjE5NjA0NSAxNS41IDggQyAxNS41IDEyLjEzNTUxMDQ0NDY0MTExIDEyLjEzNTUxMDQ0NDY0MTExIDE1LjUgOCAxNS41IFoiIC8+IDxwYXRoIGNsYXNzPSJkIiBkPSJNIDggMSBDIDQuMTQwMTkwMTI0NTExNzE5IDEgMSA0LjE0MDE5MDEyNDUxMTcxOSAxIDggQyAxIDExLjg1OTgwOTg3NTQ4ODI4IDQuMTQwMTkwMTI0NTExNzE5IDE1IDggMTUgQyAxMS44NTk4MDk4NzU0ODgyOCAxNSAxNSAxMS44NTk4MDk4NzU0ODgyOCAxNSA4IEMgMTUgNC4xNDAxOTAxMjQ1MTE3MTkgMTEuODU5ODA5ODc1NDg4MjggMSA4IDEgTSA4IDAgQyAxMi40MTgyNzk2NDc4MjcxNSAwIDE2IDMuNTgxNzIwMzUyMTcyODUyIDE2IDggQyAxNiAxMi40MTgyNzk2NDc4MjcxNSAxMi40MTgyNzk2NDc4MjcxNSAxNiA4IDE2IEMgMy41ODE3MjAzNTIxNzI4NTIgMTYgMCAxMi40MTgyNzk2NDc4MjcxNSAwIDggQyAwIDMuNTgxNzIwMzUyMTcyODUyIDMuNTgxNzIwMzUyMTcyODUyIDAgOCAwIFoiIC8+IDwvZz4gPGNpcmNsZSBjbGFzcz0iYiIgY3g9IjUiIGN5PSI1IiByPSI1IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNTAgMTIzOCkiIC8+IDwvZz4gPC9zdmc+Cg==')
+    &.success
+      .radio
+        &:checked
+          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4gPGRlZnM+IDxzdHlsZT4uYXtmaWxsOiNmZmY7fS5ie2ZpbGw6IzAwQTAxNDt9LmMsLmR7c3Ryb2tlOm5vbmU7fS5ke2ZpbGw6IzExMTt9PC9zdHlsZT4gPC9kZWZzPiA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzQ3IC0xMjM1KSI+IDxnIGNsYXNzPSJhIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNDcgMTIzNSkiPiA8cGF0aCBjbGFzcz0iYyIgZD0iTSA4IDE1LjUgQyAzLjg2NDQ5MDAzMjE5NjA0NSAxNS41IDAuNSAxMi4xMzU1MTA0NDQ2NDExMSAwLjUgOCBDIDAuNSAzLjg2NDQ5MDAzMjE5NjA0NSAzLjg2NDQ5MDAzMjE5NjA0NSAwLjUgOCAwLjUgQyAxMi4xMzU1MTA0NDQ2NDExMSAwLjUgMTUuNSAzLjg2NDQ5MDAzMjE5NjA0NSAxNS41IDggQyAxNS41IDEyLjEzNTUxMDQ0NDY0MTExIDEyLjEzNTUxMDQ0NDY0MTExIDE1LjUgOCAxNS41IFoiIC8+IDxwYXRoIGNsYXNzPSJkIiBkPSJNIDggMSBDIDQuMTQwMTkwMTI0NTExNzE5IDEgMSA0LjE0MDE5MDEyNDUxMTcxOSAxIDggQyAxIDExLjg1OTgwOTg3NTQ4ODI4IDQuMTQwMTkwMTI0NTExNzE5IDE1IDggMTUgQyAxMS44NTk4MDk4NzU0ODgyOCAxNSAxNSAxMS44NTk4MDk4NzU0ODgyOCAxNSA4IEMgMTUgNC4xNDAxOTAxMjQ1MTE3MTkgMTEuODU5ODA5ODc1NDg4MjggMSA4IDEgTSA4IDAgQyAxMi40MTgyNzk2NDc4MjcxNSAwIDE2IDMuNTgxNzIwMzUyMTcyODUyIDE2IDggQyAxNiAxMi40MTgyNzk2NDc4MjcxNSAxMi40MTgyNzk2NDc4MjcxNSAxNiA4IDE2IEMgMy41ODE3MjAzNTIxNzI4NTIgMTYgMCAxMi40MTgyNzk2NDc4MjcxNSAwIDggQyAwIDMuNTgxNzIwMzUyMTcyODUyIDMuNTgxNzIwMzUyMTcyODUyIDAgOCAwIFoiIC8+IDwvZz4gPGNpcmNsZSBjbGFzcz0iYiIgY3g9IjUiIGN5PSI1IiByPSI1IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNTAgMTIzOCkiIC8+IDwvZz4gPC9zdmc+Cg==')
+    &.cancel
+      .radio
+        &:checked
+          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4gPGRlZnM+IDxzdHlsZT4uYXtmaWxsOiNmZmY7fS5ie2ZpbGw6I0VBNTQ1NTt9LmMsLmR7c3Ryb2tlOm5vbmU7fS5ke2ZpbGw6IzExMTt9PC9zdHlsZT4gPC9kZWZzPiA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzQ3IC0xMjM1KSI+IDxnIGNsYXNzPSJhIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNDcgMTIzNSkiPiA8cGF0aCBjbGFzcz0iYyIgZD0iTSA4IDE1LjUgQyAzLjg2NDQ5MDAzMjE5NjA0NSAxNS41IDAuNSAxMi4xMzU1MTA0NDQ2NDExMSAwLjUgOCBDIDAuNSAzLjg2NDQ5MDAzMjE5NjA0NSAzLjg2NDQ5MDAzMjE5NjA0NSAwLjUgOCAwLjUgQyAxMi4xMzU1MTA0NDQ2NDExMSAwLjUgMTUuNSAzLjg2NDQ5MDAzMjE5NjA0NSAxNS41IDggQyAxNS41IDEyLjEzNTUxMDQ0NDY0MTExIDEyLjEzNTUxMDQ0NDY0MTExIDE1LjUgOCAxNS41IFoiIC8+IDxwYXRoIGNsYXNzPSJkIiBkPSJNIDggMSBDIDQuMTQwMTkwMTI0NTExNzE5IDEgMSA0LjE0MDE5MDEyNDUxMTcxOSAxIDggQyAxIDExLjg1OTgwOTg3NTQ4ODI4IDQuMTQwMTkwMTI0NTExNzE5IDE1IDggMTUgQyAxMS44NTk4MDk4NzU0ODgyOCAxNSAxNSAxMS44NTk4MDk4NzU0ODgyOCAxNSA4IEMgMTUgNC4xNDAxOTAxMjQ1MTE3MTkgMTEuODU5ODA5ODc1NDg4MjggMSA4IDEgTSA4IDAgQyAxMi40MTgyNzk2NDc4MjcxNSAwIDE2IDMuNTgxNzIwMzUyMTcyODUyIDE2IDggQyAxNiAxMi40MTgyNzk2NDc4MjcxNSAxMi40MTgyNzk2NDc4MjcxNSAxNiA4IDE2IEMgMy41ODE3MjAzNTIxNzI4NTIgMTYgMCAxMi40MTgyNzk2NDc4MjcxNSAwIDggQyAwIDMuNTgxNzIwMzUyMTcyODUyIDMuNTgxNzIwMzUyMTcyODUyIDAgOCAwIFoiIC8+IDwvZz4gPGNpcmNsZSBjbGFzcz0iYiIgY3g9IjUiIGN5PSI1IiByPSI1IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNTAgMTIzOCkiIC8+IDwvZz4gPC9zdmc+Cg==')
+    &.warning
+      .radio
+        &:checked
+          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4gPGRlZnM+IDxzdHlsZT4uYXtmaWxsOiNmZmY7fS5ie2ZpbGw6I2ZmYzgwMDt9LmMsLmR7c3Ryb2tlOm5vbmU7fS5ke2ZpbGw6IzExMTt9PC9zdHlsZT4gPC9kZWZzPiA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzQ3IC0xMjM1KSI+IDxnIGNsYXNzPSJhIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNDcgMTIzNSkiPiA8cGF0aCBjbGFzcz0iYyIgZD0iTSA4IDE1LjUgQyAzLjg2NDQ5MDAzMjE5NjA0NSAxNS41IDAuNSAxMi4xMzU1MTA0NDQ2NDExMSAwLjUgOCBDIDAuNSAzLjg2NDQ5MDAzMjE5NjA0NSAzLjg2NDQ5MDAzMjE5NjA0NSAwLjUgOCAwLjUgQyAxMi4xMzU1MTA0NDQ2NDExMSAwLjUgMTUuNSAzLjg2NDQ5MDAzMjE5NjA0NSAxNS41IDggQyAxNS41IDEyLjEzNTUxMDQ0NDY0MTExIDEyLjEzNTUxMDQ0NDY0MTExIDE1LjUgOCAxNS41IFoiIC8+IDxwYXRoIGNsYXNzPSJkIiBkPSJNIDggMSBDIDQuMTQwMTkwMTI0NTExNzE5IDEgMSA0LjE0MDE5MDEyNDUxMTcxOSAxIDggQyAxIDExLjg1OTgwOTg3NTQ4ODI4IDQuMTQwMTkwMTI0NTExNzE5IDE1IDggMTUgQyAxMS44NTk4MDk4NzU0ODgyOCAxNSAxNSAxMS44NTk4MDk4NzU0ODgyOCAxNSA4IEMgMTUgNC4xNDAxOTAxMjQ1MTE3MTkgMTEuODU5ODA5ODc1NDg4MjggMSA4IDEgTSA4IDAgQyAxMi40MTgyNzk2NDc4MjcxNSAwIDE2IDMuNTgxNzIwMzUyMTcyODUyIDE2IDggQyAxNiAxMi40MTgyNzk2NDc4MjcxNSAxMi40MTgyNzk2NDc4MjcxNSAxNiA4IDE2IEMgMy41ODE3MjAzNTIxNzI4NTIgMTYgMCAxMi40MTgyNzk2NDc4MjcxNSAwIDggQyAwIDMuNTgxNzIwMzUyMTcyODUyIDMuNTgxNzIwMzUyMTcyODUyIDAgOCAwIFoiIC8+IDwvZz4gPGNpcmNsZSBjbGFzcz0iYiIgY3g9IjUiIGN5PSI1IiByPSI1IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNTAgMTIzOCkiIC8+IDwvZz4gPC9zdmc+Cg==')
+    &.info
+      .radio
+        &:checked
+          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4gPGRlZnM+IDxzdHlsZT4uYXtmaWxsOiNmZmY7fS5ie2ZpbGw6IzQzOEVGRjt9LmMsLmR7c3Ryb2tlOm5vbmU7fS5ke2ZpbGw6IzExMTt9PC9zdHlsZT4gPC9kZWZzPiA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzQ3IC0xMjM1KSI+IDxnIGNsYXNzPSJhIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNDcgMTIzNSkiPiA8cGF0aCBjbGFzcz0iYyIgZD0iTSA4IDE1LjUgQyAzLjg2NDQ5MDAzMjE5NjA0NSAxNS41IDAuNSAxMi4xMzU1MTA0NDQ2NDExMSAwLjUgOCBDIDAuNSAzLjg2NDQ5MDAzMjE5NjA0NSAzLjg2NDQ5MDAzMjE5NjA0NSAwLjUgOCAwLjUgQyAxMi4xMzU1MTA0NDQ2NDExMSAwLjUgMTUuNSAzLjg2NDQ5MDAzMjE5NjA0NSAxNS41IDggQyAxNS41IDEyLjEzNTUxMDQ0NDY0MTExIDEyLjEzNTUxMDQ0NDY0MTExIDE1LjUgOCAxNS41IFoiIC8+IDxwYXRoIGNsYXNzPSJkIiBkPSJNIDggMSBDIDQuMTQwMTkwMTI0NTExNzE5IDEgMSA0LjE0MDE5MDEyNDUxMTcxOSAxIDggQyAxIDExLjg1OTgwOTg3NTQ4ODI4IDQuMTQwMTkwMTI0NTExNzE5IDE1IDggMTUgQyAxMS44NTk4MDk4NzU0ODgyOCAxNSAxNSAxMS44NTk4MDk4NzU0ODgyOCAxNSA4IEMgMTUgNC4xNDAxOTAxMjQ1MTE3MTkgMTEuODU5ODA5ODc1NDg4MjggMSA4IDEgTSA4IDAgQyAxMi40MTgyNzk2NDc4MjcxNSAwIDE2IDMuNTgxNzIwMzUyMTcyODUyIDE2IDggQyAxNiAxMi40MTgyNzk2NDc4MjcxNSAxMi40MTgyNzk2NDc4MjcxNSAxNiA4IDE2IEMgMy41ODE3MjAzNTIxNzI4NTIgMTYgMCAxMi40MTgyNzk2NDc4MjcxNSAwIDggQyAwIDMuNTgxNzIwMzUyMTcyODUyIDMuNTgxNzIwMzUyMTcyODUyIDAgOCAwIFoiIC8+IDwvZz4gPGNpcmNsZSBjbGFzcz0iYiIgY3g9IjUiIGN5PSI1IiByPSI1IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNTAgMTIzOCkiIC8+IDwvZz4gPC9zdmc+Cg==')
+    &.dark
+      .radio
+        &:checked
+          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4gPGRlZnM+IDxzdHlsZT4uYXtmaWxsOiNmZmY7fS5ie2ZpbGw6IzdBN0E3QTt9LmMsLmR7c3Ryb2tlOm5vbmU7fS5ke2ZpbGw6IzExMTt9PC9zdHlsZT4gPC9kZWZzPiA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzQ3IC0xMjM1KSI+IDxnIGNsYXNzPSJhIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNDcgMTIzNSkiPiA8cGF0aCBjbGFzcz0iYyIgZD0iTSA4IDE1LjUgQyAzLjg2NDQ5MDAzMjE5NjA0NSAxNS41IDAuNSAxMi4xMzU1MTA0NDQ2NDExMSAwLjUgOCBDIDAuNSAzLjg2NDQ5MDAzMjE5NjA0NSAzLjg2NDQ5MDAzMjE5NjA0NSAwLjUgOCAwLjUgQyAxMi4xMzU1MTA0NDQ2NDExMSAwLjUgMTUuNSAzLjg2NDQ5MDAzMjE5NjA0NSAxNS41IDggQyAxNS41IDEyLjEzNTUxMDQ0NDY0MTExIDEyLjEzNTUxMDQ0NDY0MTExIDE1LjUgOCAxNS41IFoiIC8+IDxwYXRoIGNsYXNzPSJkIiBkPSJNIDggMSBDIDQuMTQwMTkwMTI0NTExNzE5IDEgMSA0LjE0MDE5MDEyNDUxMTcxOSAxIDggQyAxIDExLjg1OTgwOTg3NTQ4ODI4IDQuMTQwMTkwMTI0NTExNzE5IDE1IDggMTUgQyAxMS44NTk4MDk4NzU0ODgyOCAxNSAxNSAxMS44NTk4MDk4NzU0ODgyOCAxNSA4IEMgMTUgNC4xNDAxOTAxMjQ1MTE3MTkgMTEuODU5ODA5ODc1NDg4MjggMSA4IDEgTSA4IDAgQyAxMi40MTgyNzk2NDc4MjcxNSAwIDE2IDMuNTgxNzIwMzUyMTcyODUyIDE2IDggQyAxNiAxMi40MTgyNzk2NDc4MjcxNSAxMi40MTgyNzk2NDc4MjcxNSAxNiA4IDE2IEMgMy41ODE3MjAzNTIxNzI4NTIgMTYgMCAxMi40MTgyNzk2NDc4MjcxNSAwIDggQyAwIDMuNTgxNzIwMzUyMTcyODUyIDMuNTgxNzIwMzUyMTcyODUyIDAgOCAwIFoiIC8+IDwvZz4gPGNpcmNsZSBjbGFzcz0iYiIgY3g9IjUiIGN5PSI1IiByPSI1IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNTAgMTIzOCkiIC8+IDwvZz4gPC9zdmc+Cg==')
+    &.disabled
+      pointer-events: none
+      cursor: not-allowed
+      .radio
+        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij48ZGVmcz48c3R5bGU+LmF7ZmlsbDpyZ2JhKDEyMiwgMTIyLCAxMjIsIDAuMjUpO30uYiwuY3tzdHJva2U6bm9uZTt9LmN7ZmlsbDojMTExO308L3N0eWxlPjwvZGVmcz48ZyBjbGFzcz0iYSI+PHBhdGggY2xhc3M9ImIiIGQ9Ik0gOCAxNS41IEMgMy44NjQ0OTAwMzIxOTYwNDUgMTUuNSAwLjUgMTIuMTM1NTEwNDQ0NjQxMTEgMC41IDggQyAwLjUgMy44NjQ0OTAwMzIxOTYwNDUgMy44NjQ0OTAwMzIxOTYwNDUgMC41IDggMC41IEMgMTIuMTM1NTEwNDQ0NjQxMTEgMC41IDE1LjUgMy44NjQ0OTAwMzIxOTYwNDUgMTUuNSA4IEMgMTUuNSAxMi4xMzU1MTA0NDQ2NDExMSAxMi4xMzU1MTA0NDQ2NDExMSAxNS41IDggMTUuNSBaIi8+PHBhdGggY2xhc3M9ImMiIGQ9Ik0gOCAxIEMgNC4xNDAxOTAxMjQ1MTE3MTkgMSAxIDQuMTQwMTkwMTI0NTExNzE5IDEgOCBDIDEgMTEuODU5ODA5ODc1NDg4MjggNC4xNDAxOTAxMjQ1MTE3MTkgMTUgOCAxNSBDIDExLjg1OTgwOTg3NTQ4ODI4IDE1IDE1IDExLjg1OTgwOTg3NTQ4ODI4IDE1IDggQyAxNSA0LjE0MDE5MDEyNDUxMTcxOSAxMS44NTk4MDk4NzU0ODgyOCAxIDggMSBNIDggMCBDIDEyLjQxODI3OTY0NzgyNzE1IDAgMTYgMy41ODE3MjAzNTIxNzI4NTIgMTYgOCBDIDE2IDEyLjQxODI3OTY0NzgyNzE1IDEyLjQxODI3OTY0NzgyNzE1IDE2IDggMTYgQyAzLjU4MTcyMDM1MjE3Mjg1MiAxNiAwIDEyLjQxODI3OTY0NzgyNzE1IDAgOCBDIDAgMy41ODE3MjAzNTIxNzI4NTIgMy41ODE3MjAzNTIxNzI4NTIgMCA4IDAgWiIvPjwvZz48L3N2Zz4K')
+    label
+      position: relative
+      brandon_regular(14px, false)
+      color: $gray
+      padding-left: 10px
+      margin-bottom: 0
+      transition: .3s ease-in-out
+    .radio
+      appearance: none
+      cursor: pointer
+      outline: none
+      width: 20px
+      height: 20px
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij48ZGVmcz48c3R5bGU+LmF7ZmlsbDojZmZmO30uYiwuY3tzdHJva2U6bm9uZTt9LmN7ZmlsbDojMTExO308L3N0eWxlPjwvZGVmcz48ZyBjbGFzcz0iYSI+PHBhdGggY2xhc3M9ImIiIGQ9Ik0gOCAxNS41IEMgMy44NjQ0OTAwMzIxOTYwNDUgMTUuNSAwLjUgMTIuMTM1NTEwNDQ0NjQxMTEgMC41IDggQyAwLjUgMy44NjQ0OTAwMzIxOTYwNDUgMy44NjQ0OTAwMzIxOTYwNDUgMC41IDggMC41IEMgMTIuMTM1NTEwNDQ0NjQxMTEgMC41IDE1LjUgMy44NjQ0OTAwMzIxOTYwNDUgMTUuNSA4IEMgMTUuNSAxMi4xMzU1MTA0NDQ2NDExMSAxMi4xMzU1MTA0NDQ2NDExMSAxNS41IDggMTUuNSBaIi8+PHBhdGggY2xhc3M9ImMiIGQ9Ik0gOCAxIEMgNC4xNDAxOTAxMjQ1MTE3MTkgMSAxIDQuMTQwMTkwMTI0NTExNzE5IDEgOCBDIDEgMTEuODU5ODA5ODc1NDg4MjggNC4xNDAxOTAxMjQ1MTE3MTkgMTUgOCAxNSBDIDExLjg1OTgwOTg3NTQ4ODI4IDE1IDE1IDExLjg1OTgwOTg3NTQ4ODI4IDE1IDggQyAxNSA0LjE0MDE5MDEyNDUxMTcxOSAxMS44NTk4MDk4NzU0ODgyOCAxIDggMSBNIDggMCBDIDEyLjQxODI3OTY0NzgyNzE1IDAgMTYgMy41ODE3MjAzNTIxNzI4NTIgMTYgOCBDIDE2IDEyLjQxODI3OTY0NzgyNzE1IDEyLjQxODI3OTY0NzgyNzE1IDE2IDggMTYgQyAzLjU4MTcyMDM1MjE3Mjg1MiAxNiAwIDEyLjQxODI3OTY0NzgyNzE1IDAgOCBDIDAgMy41ODE3MjAzNTIxNzI4NTIgMy41ODE3MjAzNTIxNzI4NTIgMCA4IDAgWiIvPjwvZz48L3N2Zz4K')
+      background-position: center
+      background-repeat: no-repeat
+      background-size: cover
+      transition: .3s ease-in-out
+      &:checked
+        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4gPGRlZnM+IDxzdHlsZT4uYXtmaWxsOiNmZmY7fS5ie2ZpbGw6IzAwODRCMDt9LmMsLmR7c3Ryb2tlOm5vbmU7fS5ke2ZpbGw6IzExMTt9PC9zdHlsZT4gPC9kZWZzPiA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzQ3IC0xMjM1KSI+IDxnIGNsYXNzPSJhIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNDcgMTIzNSkiPiA8cGF0aCBjbGFzcz0iYyIgZD0iTSA4IDE1LjUgQyAzLjg2NDQ5MDAzMjE5NjA0NSAxNS41IDAuNSAxMi4xMzU1MTA0NDQ2NDExMSAwLjUgOCBDIDAuNSAzLjg2NDQ5MDAzMjE5NjA0NSAzLjg2NDQ5MDAzMjE5NjA0NSAwLjUgOCAwLjUgQyAxMi4xMzU1MTA0NDQ2NDExMSAwLjUgMTUuNSAzLjg2NDQ5MDAzMjE5NjA0NSAxNS41IDggQyAxNS41IDEyLjEzNTUxMDQ0NDY0MTExIDEyLjEzNTUxMDQ0NDY0MTExIDE1LjUgOCAxNS41IFoiIC8+IDxwYXRoIGNsYXNzPSJkIiBkPSJNIDggMSBDIDQuMTQwMTkwMTI0NTExNzE5IDEgMSA0LjE0MDE5MDEyNDUxMTcxOSAxIDggQyAxIDExLjg1OTgwOTg3NTQ4ODI4IDQuMTQwMTkwMTI0NTExNzE5IDE1IDggMTUgQyAxMS44NTk4MDk4NzU0ODgyOCAxNSAxNSAxMS44NTk4MDk4NzU0ODgyOCAxNSA4IEMgMTUgNC4xNDAxOTAxMjQ1MTE3MTkgMTEuODU5ODA5ODc1NDg4MjggMSA4IDEgTSA4IDAgQyAxMi40MTgyNzk2NDc4MjcxNSAwIDE2IDMuNTgxNzIwMzUyMTcyODUyIDE2IDggQyAxNiAxMi40MTgyNzk2NDc4MjcxNSAxMi40MTgyNzk2NDc4MjcxNSAxNiA4IDE2IEMgMy41ODE3MjAzNTIxNzI4NTIgMTYgMCAxMi40MTgyNzk2NDc4MjcxNSAwIDggQyAwIDMuNTgxNzIwMzUyMTcyODUyIDMuNTgxNzIwMzUyMTcyODUyIDAgOCAwIFoiIC8+IDwvZz4gPGNpcmNsZSBjbGFzcz0iYiIgY3g9IjUiIGN5PSI1IiByPSI1IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNTAgMTIzOCkiIC8+IDwvZz4gPC9zdmc+Cg==')
+        transition: .3s ease-in-out
+  .checkbox
+    position: relative
+    display: flex
+    flex-flow: row wrap
+    align-items: center
+    justify-content: flex-start
+    &.secondary
+      .check
+        &:checked
+          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOSIgaGVpZ2h0PSIxOSIgdmlld0JveD0iMCAwIDE5IDE5Ij48ZGVmcz48c3R5bGU+LmF7ZmlsbDojRkY0NDAwO30uYntmaWxsOm5vbmU7c3Ryb2tlOiNmZmY7c3Ryb2tlLXdpZHRoOjJweDt9PC9zdHlsZT48L2RlZnM+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTUzMyAtMTIzOSkiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIxIDk3NSkiPjxwYXRoIGNsYXNzPSJhIiBkPSJNNCwwSDE1YTQsNCwwLDAsMSw0LDRWMTVhNCw0LDAsMCwxLTQsNEg0YTQsNCwwLDAsMS00LTRWNEE0LDQsMCwwLDEsNCwwWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTEyIDI2NCkiLz48cGF0aCBjbGFzcz0iYiIgZD0iTS0xMjE5NC45MDgtNTA2Mi41NTRsMy4xNTksMy4xNTksNy43NS03Ljc1MSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI3MTEgNTMzNS43MDMpIi8+PC9nPjwvZz48L3N2Zz4K')
+    &.success
+      .check
+        &:checked
+          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOSIgaGVpZ2h0PSIxOSIgdmlld0JveD0iMCAwIDE5IDE5Ij48ZGVmcz48c3R5bGU+LmF7ZmlsbDojMDBBMDE0O30uYntmaWxsOm5vbmU7c3Ryb2tlOiNmZmY7c3Ryb2tlLXdpZHRoOjJweDt9PC9zdHlsZT48L2RlZnM+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTUzMyAtMTIzOSkiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIxIDk3NSkiPjxwYXRoIGNsYXNzPSJhIiBkPSJNNCwwSDE1YTQsNCwwLDAsMSw0LDRWMTVhNCw0LDAsMCwxLTQsNEg0YTQsNCwwLDAsMS00LTRWNEE0LDQsMCwwLDEsNCwwWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTEyIDI2NCkiLz48cGF0aCBjbGFzcz0iYiIgZD0iTS0xMjE5NC45MDgtNTA2Mi41NTRsMy4xNTksMy4xNTksNy43NS03Ljc1MSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI3MTEgNTMzNS43MDMpIi8+PC9nPjwvZz48L3N2Zz4K')
+    &.cancel
+      .check
+        &:checked
+          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOSIgaGVpZ2h0PSIxOSIgdmlld0JveD0iMCAwIDE5IDE5Ij48ZGVmcz48c3R5bGU+LmF7ZmlsbDojRUE1NDU1O30uYntmaWxsOm5vbmU7c3Ryb2tlOiNmZmY7c3Ryb2tlLXdpZHRoOjJweDt9PC9zdHlsZT48L2RlZnM+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTUzMyAtMTIzOSkiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIxIDk3NSkiPjxwYXRoIGNsYXNzPSJhIiBkPSJNNCwwSDE1YTQsNCwwLDAsMSw0LDRWMTVhNCw0LDAsMCwxLTQsNEg0YTQsNCwwLDAsMS00LTRWNEE0LDQsMCwwLDEsNCwwWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTEyIDI2NCkiLz48cGF0aCBjbGFzcz0iYiIgZD0iTS0xMjE5NC45MDgtNTA2Mi41NTRsMy4xNTksMy4xNTksNy43NS03Ljc1MSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI3MTEgNTMzNS43MDMpIi8+PC9nPjwvZz48L3N2Zz4K')
+    &.warning
+      .check
+        &:checked
+          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOSIgaGVpZ2h0PSIxOSIgdmlld0JveD0iMCAwIDE5IDE5Ij48ZGVmcz48c3R5bGU+LmF7ZmlsbDojZmZjODAwO30uYntmaWxsOm5vbmU7c3Ryb2tlOiNmZmY7c3Ryb2tlLXdpZHRoOjJweDt9PC9zdHlsZT48L2RlZnM+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTUzMyAtMTIzOSkiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIxIDk3NSkiPjxwYXRoIGNsYXNzPSJhIiBkPSJNNCwwSDE1YTQsNCwwLDAsMSw0LDRWMTVhNCw0LDAsMCwxLTQsNEg0YTQsNCwwLDAsMS00LTRWNEE0LDQsMCwwLDEsNCwwWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTEyIDI2NCkiLz48cGF0aCBjbGFzcz0iYiIgZD0iTS0xMjE5NC45MDgtNTA2Mi41NTRsMy4xNTksMy4xNTksNy43NS03Ljc1MSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI3MTEgNTMzNS43MDMpIi8+PC9nPjwvZz48L3N2Zz4K')
+    &.info
+      .check
+        &:checked
+          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOSIgaGVpZ2h0PSIxOSIgdmlld0JveD0iMCAwIDE5IDE5Ij48ZGVmcz48c3R5bGU+LmF7ZmlsbDojNDM4RUZGO30uYntmaWxsOm5vbmU7c3Ryb2tlOiNmZmY7c3Ryb2tlLXdpZHRoOjJweDt9PC9zdHlsZT48L2RlZnM+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTUzMyAtMTIzOSkiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIxIDk3NSkiPjxwYXRoIGNsYXNzPSJhIiBkPSJNNCwwSDE1YTQsNCwwLDAsMSw0LDRWMTVhNCw0LDAsMCwxLTQsNEg0YTQsNCwwLDAsMS00LTRWNEE0LDQsMCwwLDEsNCwwWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTEyIDI2NCkiLz48cGF0aCBjbGFzcz0iYiIgZD0iTS0xMjE5NC45MDgtNTA2Mi41NTRsMy4xNTksMy4xNTksNy43NS03Ljc1MSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI3MTEgNTMzNS43MDMpIi8+PC9nPjwvZz48L3N2Zz4K')
+    &.dark
+      .check
+        &:checked
+          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOSIgaGVpZ2h0PSIxOSIgdmlld0JveD0iMCAwIDE5IDE5Ij48ZGVmcz48c3R5bGU+LmF7ZmlsbDojN0E3QTdBO30uYntmaWxsOm5vbmU7c3Ryb2tlOiNmZmY7c3Ryb2tlLXdpZHRoOjJweDt9PC9zdHlsZT48L2RlZnM+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTUzMyAtMTIzOSkiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIxIDk3NSkiPjxwYXRoIGNsYXNzPSJhIiBkPSJNNCwwSDE1YTQsNCwwLDAsMSw0LDRWMTVhNCw0LDAsMCwxLTQsNEg0YTQsNCwwLDAsMS00LTRWNEE0LDQsMCwwLDEsNCwwWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTEyIDI2NCkiLz48cGF0aCBjbGFzcz0iYiIgZD0iTS0xMjE5NC45MDgtNTA2Mi41NTRsMy4xNTksMy4xNTksNy43NS03Ljc1MSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI3MTEgNTMzNS43MDMpIi8+PC9nPjwvZz48L3N2Zz4K')
+    &.disabled
+      pointer-events: none
+      cursor: not-allowed
+      .check
+        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOSIgaGVpZ2h0PSIxOSIgdmlld0JveD0iMCAwIDE5IDE5Ij48ZGVmcz48c3R5bGU+LmF7ZmlsbDpyZ2JhKDEyMiwgMTIyLCAxMjIsIDAuMjUpO30uYiwuY3tzdHJva2U6bm9uZTt9LmN7ZmlsbDojMTExO308L3N0eWxlPjwvZGVmcz48ZyBjbGFzcz0iYSI+PHBhdGggY2xhc3M9ImIiIGQ9Ik0gMTUgMTguNSBMIDQgMTguNSBDIDIuMDcwMDkwMDU1NDY1Njk4IDE4LjUgMC41IDE2LjkyOTkxMDY1OTc5MDA0IDAuNSAxNSBMIDAuNSA0IEMgMC41IDIuMDcwMDkwMDU1NDY1Njk4IDIuMDcwMDkwMDU1NDY1Njk4IDAuNSA0IDAuNSBMIDE1IDAuNSBDIDE2LjkyOTkxMDY1OTc5MDA0IDAuNSAxOC41IDIuMDcwMDkwMDU1NDY1Njk4IDE4LjUgNCBMIDE4LjUgMTUgQyAxOC41IDE2LjkyOTkxMDY1OTc5MDA0IDE2LjkyOTkxMDY1OTc5MDA0IDE4LjUgMTUgMTguNSBaIi8+PHBhdGggY2xhc3M9ImMiIGQ9Ik0gNCAxIEMgMi4zNDU3OTA4NjMwMzcxMDkgMSAxIDIuMzQ1NzkwODYzMDM3MTA5IDEgNCBMIDEgMTUgQyAxIDE2LjY1NDIwOTEzNjk2Mjg5IDIuMzQ1NzkwODYzMDM3MTA5IDE4IDQgMTggTCAxNSAxOCBDIDE2LjY1NDIwOTEzNjk2Mjg5IDE4IDE4IDE2LjY1NDIwOTEzNjk2Mjg5IDE4IDE1IEwgMTggNCBDIDE4IDIuMzQ1NzkwODYzMDM3MTA5IDE2LjY1NDIwOTEzNjk2Mjg5IDEgMTUgMSBMIDQgMSBNIDQgMCBMIDE1IDAgQyAxNy4yMDkxNDA3Nzc1ODc4OSAwIDE5IDEuNzkwODU5MjIyNDEyMTA5IDE5IDQgTCAxOSAxNSBDIDE5IDE3LjIwOTE0MDc3NzU4Nzg5IDE3LjIwOTE0MDc3NzU4Nzg5IDE5IDE1IDE5IEwgNCAxOSBDIDEuNzkwODU5MjIyNDEyMTA5IDE5IDAgMTcuMjA5MTQwNzc3NTg3ODkgMCAxNSBMIDAgNCBDIDAgMS43OTA4NTkyMjI0MTIxMDkgMS43OTA4NTkyMjI0MTIxMDkgMCA0IDAgWiIvPjwvZz48L3N2Zz4K')
+    label
+      position: relative
+      brandon_regular(14px, false)
+      color: $gray
+      padding-left: 10px
+      margin-bottom: 0
+      transition: .3s ease-in-out
+    .check
+      -webkit-appearance: none
+      outline: none
+      width: 20px
+      height: 20px
+      padding-left: 20px
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOSIgaGVpZ2h0PSIxOSIgdmlld0JveD0iMCAwIDE5IDE5Ij48ZGVmcz48c3R5bGU+LmF7ZmlsbDojZmZmO30uYiwuY3tzdHJva2U6bm9uZTt9LmN7ZmlsbDojMTExO308L3N0eWxlPjwvZGVmcz48ZyBjbGFzcz0iYSI+PHBhdGggY2xhc3M9ImIiIGQ9Ik0gMTUgMTguNSBMIDQgMTguNSBDIDIuMDcwMDkwMDU1NDY1Njk4IDE4LjUgMC41IDE2LjkyOTkxMDY1OTc5MDA0IDAuNSAxNSBMIDAuNSA0IEMgMC41IDIuMDcwMDkwMDU1NDY1Njk4IDIuMDcwMDkwMDU1NDY1Njk4IDAuNSA0IDAuNSBMIDE1IDAuNSBDIDE2LjkyOTkxMDY1OTc5MDA0IDAuNSAxOC41IDIuMDcwMDkwMDU1NDY1Njk4IDE4LjUgNCBMIDE4LjUgMTUgQyAxOC41IDE2LjkyOTkxMDY1OTc5MDA0IDE2LjkyOTkxMDY1OTc5MDA0IDE4LjUgMTUgMTguNSBaIi8+PHBhdGggY2xhc3M9ImMiIGQ9Ik0gNCAxIEMgMi4zNDU3OTA4NjMwMzcxMDkgMSAxIDIuMzQ1NzkwODYzMDM3MTA5IDEgNCBMIDEgMTUgQyAxIDE2LjY1NDIwOTEzNjk2Mjg5IDIuMzQ1NzkwODYzMDM3MTA5IDE4IDQgMTggTCAxNSAxOCBDIDE2LjY1NDIwOTEzNjk2Mjg5IDE4IDE4IDE2LjY1NDIwOTEzNjk2Mjg5IDE4IDE1IEwgMTggNCBDIDE4IDIuMzQ1NzkwODYzMDM3MTA5IDE2LjY1NDIwOTEzNjk2Mjg5IDEgMTUgMSBMIDQgMSBNIDQgMCBMIDE1IDAgQyAxNy4yMDkxNDA3Nzc1ODc4OSAwIDE5IDEuNzkwODU5MjIyNDEyMTA5IDE5IDQgTCAxOSAxNSBDIDE5IDE3LjIwOTE0MDc3NzU4Nzg5IDE3LjIwOTE0MDc3NzU4Nzg5IDE5IDE1IDE5IEwgNCAxOSBDIDEuNzkwODU5MjIyNDEyMTA5IDE5IDAgMTcuMjA5MTQwNzc3NTg3ODkgMCAxNSBMIDAgNCBDIDAgMS43OTA4NTkyMjI0MTIxMDkgMS43OTA4NTkyMjI0MTIxMDkgMCA0IDAgWiIvPjwvZz48L3N2Zz4K')
+      background-position: center
+      background-repeat: no-repeat
+      background-size: contain
+      transition: .3s ease-in-out
+      &:checked
+        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOSIgaGVpZ2h0PSIxOSIgdmlld0JveD0iMCAwIDE5IDE5Ij48ZGVmcz48c3R5bGU+LmF7ZmlsbDojRkY5MDAwO30uYntmaWxsOm5vbmU7c3Ryb2tlOiNmZmY7c3Ryb2tlLXdpZHRoOjJweDt9PC9zdHlsZT48L2RlZnM+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTUzMyAtMTIzOSkiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIxIDk3NSkiPjxwYXRoIGNsYXNzPSJhIiBkPSJNNCwwSDE1YTQsNCwwLDAsMSw0LDRWMTVhNCw0LDAsMCwxLTQsNEg0YTQsNCwwLDAsMS00LTRWNEE0LDQsMCwwLDEsNCwwWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTEyIDI2NCkiLz48cGF0aCBjbGFzcz0iYiIgZD0iTS0xMjE5NC45MDgtNTA2Mi41NTRsMy4xNTksMy4xNTksNy43NS03Ljc1MSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI3MTEgNTMzNS43MDMpIi8+PC9nPjwvZz48L3N2Zz4K')
+        transition: .3s ease-in-out
+  .group
+    position: relative
+    margin-bottom: 20px
+    &.image
+      text-align: center
+      img
+        width: 500px
+        height: auto
+    .icon
+      position: absolute
+      top: calc(50% + 10px)
+      right: 15px
+      z-index: 1
+      transform: translateY(-50%)
+      .icon_a
+        fill: $gray
+        transition: .3s ease-in-out
+      &.active
+        .icon_a
+          fill: $primary
+    &.multi
+      &.disabled
+        pointer-events: none
+        .multiselect__tags
+          cursor: not-allowed
+          background: transparentify($black, 0.1)
+      .multiselect__placeholder
+        margin-bottom: 5px
+      .multiselect__select
+        top: 50%
+        transform: translateY(-50%)
+        &::before
+          color: $primary
+          border-color: $primary transparent transparent
+      .multiselect__tags
+        border: 1px solid $gray
+        padding: 10px 15px 3px
+        border-radius: 0
+        brandon_regular(16px, false)
+      .multiselect__tag-icon
+        display: flex
+        flex-flow: row wrap
+        align-items: center
+        justify-content: center
+      .multiselect__tag,
+      .multiselect__tag-icon:hover
+        background: $primary
+      .multiselect__tag-icon:after
+        color: $white
+        font-size: 20px
+      .multiselect__option--highlight,
+      .multiselect__option--highlight:after
+        background: $primary
+    &.flex
+      display: flex
+      flex-flow: row wrap
+      align-items: center
+      justify-content: flex-start
+      .avatar
+        flex: 0 0 75px
+      .left_info
+        flex: 1 0 auto
+        padding-left: 20px
+        h2
+          brandon_medium(14px, true)
+          color: $gray
+        h3
+          brandon_bold(20px, false)
+          color: $primary
+    .label
+      brandon_medium(12px, true)
+      color: $primary
+      padding-bottom: 5px
+      transition: .3s ease-in-out
+    &.pt
+      padding-top: 20px
+    &.select
+      .input
+        height: 45px
+      .dd
+        content: ''
+        position: absolute
+        top: 50%
+        right: 10px
+        border-left: 7px solid transparent
+        border-right: 7px solid transparent
+        border-top: 7px solid $primary
+        z-index: 0
+        transform: translateY(-50%)
+      &.fixed,
+      &.bordered,
+      &.radius
+        &.slim
+          .input
+            height: 35px
+            padding: 0 10px
+          .dd
+            transform: translateY(-50%)
+        .dd
+          transform: translateY(calc(-50% + 12px))
+    .input,
+    .field-input
+      position: relative
+      z-index: 0
+      width: 100%
+      background-color: transparent
+      border: none
+      padding: 10px
+      border-bottom: 1px solid $gray
+      outline: none
+      border-radius: 0
+      box-shadow: none
+      brandon_regular(16px, false)
+      color: $black
+      appearance: none
+      transition: .3s ease-in-out
+      &.picker
+        height: 45px
+      &.search
+        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjN0E3QTdBIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgY2xhc3M9ImZlYXRoZXIgZmVhdGhlci1zZWFyY2giPjxjaXJjbGUgY3g9IjExIiBjeT0iMTEiIHI9IjgiPjwvY2lyY2xlPjxsaW5lIHgxPSIyMSIgeTE9IjIxIiB4Mj0iMTYuNjUiIHkyPSIxNi42NSI+PC9saW5lPjwvc3ZnPgo=')
+        background-position: calc(100% - 5px) center
+        background-repeat: no-repeat
+      &.disabled
+        pointer-events: none
+        cursor: not-allowed
+        background-color: transparentify($black, 0.1)
+      &:focus
+        border-bottom: 1px solid $primary
+        transition: .3s ease-in-out
+    &.floating
+      label
+        position: absolute
+        pointer-events: none
+        top: 50%
+        left: 0
+        brandon_medium(16px, true)
+        color: $gray
+        z-index: 0
+        opacity: 0.5
+        transform: translateY(-50%)
+        transition: .3s ease-in-out
+      .input,
+      .field-input
+        &.disabled
+          & ~ .dd
+            border-top: 7px solid $gray
+            transform: translateY(calc(-50% + 10px))
+          & ~ label
+            brandon_medium(12px, true)
+            color: $gray
+            top: 0
+            transition: .3s ease-in-out
+        &.filled,
+        &:focus
+          border-bottom: 1px solid $primary
+          transition: .3s ease-in-out
+          & ~ label
+            brandon_medium(12px, true)
+            color: $primary
+            top: 0
+            opacity: 1
+            transition: .3s ease-in-out
+    &.fixed,
+    &.bordered,
+    &.radius
+      label
+        brandon_medium(12px, true)
+        color: $gray
+        transition: .3s ease-in-out
+        b
+          color: $black
+      .input,
+      .field-input
+        border-bottom: 1px solid $gray
+        transition: .3s ease-in-out
+        &:focus
+          border-bottom: 1px solid $primary
+          transition: .3s ease-in-out
+      &.filled
+        label
+          color: $primary
+          transition: .3s ease-in-out
+        .input,
+        .field-input
+          border-bottom: 2px solid $primary
+          transition: .3s ease-in-out
+    &.bordered,
+    &.radius
+      .input,
+      .field-input
+        border: 1px solid $gray
+        transition: .3s ease-in-out
+        &:focus
+          border: 1px solid $primary
+          transition: .3s ease-in-out
+      &.filled
+        .input,
+        .field-input
+          border: 1px solid $primary
+          transition: .3s ease-in-out
+    &.radius
+      .input,
+      .field-input
+        border-radius: 5px
+        transition: .3s ease-in-out
+  .buttons
+    padding-top: 20px
+    display: flex
+    flex-flow: row wrap
+    align-items: center
+    justify-content: space-between
+    &.start
+      justify-content: flex-start
+    &.fixed
+      position: fixed
+      z-index: 2
+      bottom: 40px
+      right: 0
+      width: 100%
+      max-width: calc(100% - 260px)
+      transition: .3s ease-in-out
+      .btn
+        border-radius: 0px
+        &.lg
+          padding: 15px
+          brandon_medium(16px, true)
+      .half_width
+        padding-top: 0
+        flex: 0 0 50%
+      .full_width
+        padding-top: 0
+        flex: 0 0 100%
+
+/**
+ * Pagination */
+#pagination
+  display: flex
+  flex-flow: row wrap
+  align-items: center
+  justify-content: center
+  padding: 20px 0 30px
+  user-select: none
+  .text
+    brandon_regular(16px, false)
+  .page_number
+    margin: 0 5px
+    .input
+      width: 50px
+      brandon_regular(16px, false)
+      background-color: transparent
+      border: none
+      padding: 6px 5px
+      border: 1px solid $primary
+      outline: none
+      border-radius: 0
+      box-shadow: none
+      brandon_regular(16px, false)
+      color: $black
+      appearance: none
+  .next
+    margin-right: 10px
+  .prev
+    margin-left: 10px
+  .next,
+  .prev
+    display: flex
+    flex-flow: row wrap
+    align-items: center
+    background-color: $primary
+    border: 1px solid $primary
+    padding: 5px
+    transition: .3s ease-in-out
+    .icon
+      stroke: $white
+      fill: transparent
+      transition: .3s ease-in-out
+    &:hover,
+    &:focus
+      background-color: $white
+      .icon
+        stroke: $primary
+    &.disabled
+      pointer-events: none
+      background-color: #e2e2e2
+      border: 1px solid #e2e2e2
+      .icon
+        stroke: $white
+/**
+ * Actions */
+.actions
+  margin-bottom: 20px
+  &.inline
+    display: flex
+    flex-flow: row wrap
+    align-items: flex-start
+    justify-content: space-between
+    &.centered
+      justify-content: center
+  .total
+    display: flex
+    flex-flow: row wrap
+    align-items: center
+    brandon_bold(24px, false)
+    span
+      padding-left: 10px
+      color: $primary
+
+.action_filter
+  position: fixed
+  width: 50px
+  top: 120px
+  right: -10px
+  z-index: 991
+  background-color: $info
+  padding: 5px 7.5px
+  border-radius: 5px 0 0 5px
+  transition: .3s ease-in-out
+  &:hover
+    right: 0
+    transition: .3s ease-in-out
+
+#filter
+  position: absolute
+  left: 0
+  z-index: 1024
+  .wrapper
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 1050
+    width: 100%
+    height: 100%
+    outline: 0
+    .content
+      position: relative
+      z-index: 1041
+      width: auto
+      max-width: 450px
+      height: 100%
+      overflow-y: auto
+      margin: 0 0 0 auto
+      background-color: $white
+      box-shadow: 0 0 30px transparentify($black, 0.2)
+      transform: translateX(0)
+      animation: filter_slide 1s
+      .close
+        position: absolute
+        top: 22px
+        right: 20px
+        display: inline-block
+        padding: 5px 10px
+        opacity: 1
+        border-radius: 5px
+        brandon_regular(20px, false)
+        background-color: $primary
+        color: $white
+        box-shadow: 0 0 10px transparentify($black, 0.2)
+        z-index: 2
+        line-height: 1
+        transform: scale(1)
+        transition: .3s ease-in-out
+        &:hover
+          transform: scale(1.1)
+          transition: .3s ease-in-out
+        &.secondary
+          background-color: $secondary
+        &.success
+          background-color: $success
+        &.cancel
+          background-color: $cancel
+        &.warning
+          background-color: $warning
+        &.info
+          background-color: $info
+        &.dark
+          background-color: $gray
+      .content_top
+        padding: 20px
+        border-bottom: 1px solid $gray_v4
+        h2
+          brandon_medium(24px, true)
+          color: $secondary
+      .content_middle
+        padding: 20px
+  .backdrop
+    position: fixed
+    top: 0
+    z-index: 1040
+    width: 100vw
+    height: 100vh
+    background-color: transparentify($black, 0.2)
+
+/**
+ * Data List */
+.table
+  border-collapse: separate
+  border-spacing: 0 15px
+  table-layout: auto
+  &.striped
+    tbody
+      tr
+        border-radius: 5px
+        box-shadow: 0 0 20px 0 transparent
+        transition: .3s ease-in-out
+        &:nth-child(odd)
+          background-color: transparentify($primary, 0.2)
+        &:nth-child(even)
+          background-color: transparent
+  thead
+    &.sticky
+      tr
+        th
+          &.stick
+            background-color: $gray_v3
+            position: sticky
+            z-index: 1
+            top: calc(0% + 85px)
+            color: $white
+            padding: 10px 15px
+            transition: .3s ease-in-out
+            &:first-child
+              border-radius: 5px 0 0 5px
+            &:last-child
+              border-radius: 0 5px 5px 0
+          .label
+            color: $white
+            transition: .3s ease-in-out
+          &.sort
+            .label
+              &.asc
+                &::before
+                  border-bottom: 7px solid $primary
+                  transition: .3s ease-in-out
+              &.desc
+                &::after
+                  border-top: 7px solid $primary
+                  transition: .3s ease-in-out
+              &::before
+                border-bottom: 7px solid $white
+                transition: .3s ease-in-out
+              &::after
+                border-top: 7px solid $white
+                transition: .3s ease-in-out
+    tr
+      text-align: left
+      th
+        position: relative
+        top: 0
+        padding: 0 15px
+        background-color: transparent
+        transition: .3s ease-in-out
+        .label
+          position: relative
+          display: inline-block
+          color: $gray
+          brandon_medium(14px, true)
+          padding-right: 20px
+          transition: .3s ease-in-out
+        &.sort
+          .label
+            &.asc
+              &::before
+                border-bottom: 7px solid $primary
+                transition: .3s ease-in-out
+            &.desc
+              &::after
+                border-top: 7px solid $primary
+                transition: .3s ease-in-out
+            &::before
+              content: ''
+              pointer-events: none
+              position: absolute
+              top: 20%
+              right: 0
+              z-index: 1
+              border-bottom: 7px solid $gray
+              border-left: 7px solid transparent
+              border-right: 7px solid transparent
+              transform: translateY(-50%) rotate(0deg)
+              transition: .3s ease-in-out
+            &::after
+              content: ''
+              pointer-events: none
+              position: absolute
+              top: 80%
+              right: 0
+              z-index: 1
+              border-top: 7px solid $gray
+              border-left: 7px solid transparent
+              border-right: 7px solid transparent
+              transform: translateY(-50%) rotate(0deg)
+              transition: .3s ease-in-out
+  tbody
+    &.no_results
+      tr
+        td
+          text-align: center
+          color: $black
+          brandon_bold(26px, false)
+          padding: 20px
+    tr
+      border-radius: 5px
+      box-shadow: 0 0 20px 0 transparentify($black, 0.05)
+      background-color: $white
+      transition: .3s ease-in-out
+      td
+        padding: 15px
+        brandon_regular(16px, false)
+        color: $black
+        &:first-child
+          border-radius: 5px 0 0 5px
+        &:last-child
+          border-radius: 0 5px 5px 0
+        &.upper
+          text-transform: uppercase
+        &.cap
+          text-transform: capitalize
+        &.bg
+          span
+            color: $white
+            brandon_bold(14px, false)
+            padding: 5px
+            border-radius: 5px
+        &.primary
+          &.bg
+            span
+              background-color: $primary
+        &.secondary
+          &.bg
+            span
+              background-color: $secondary
+        &.info
+          &.bg
+            span
+              background-color: $info
+        &.cancel
+          &.bg
+            span
+              background-color: $cancel
+        &.success
+          &.bg
+            span
+              background-color: $success
+        &.warning
+          &.bg
+            span
+              background-color: $warning
+        &.gray
+          &.bg
+            span
+              background-color: $gray
+        .name
+          brandon_medium(16px, false)
+          text-decoration: underline
+          color: $primary
+          transition: .3s ease-in-out
+          &:hover
+            text-shadow: 0px 0px 15px transparentify($primary, 0.5)
+        &.thumb
+          .wrapper
+            display: flex
+            flex-flow: row wrap
+            align-items: center
+            img
+              width: 35px
+              height: 35px
+              border-radius: 50%
+              object-fit: cover
+              object-position: center
+            .image
+              position: relative
+              background-color: $secondary
+              brandon_regular(14px, true)
+              border-radius: 50%
+              color: $white
+              width: 35px
+              height: 35px
+              .overlay
+                position: absolute
+                top: 50%
+                left: 0
+                right: 0
+                text-align: center
+                transform: translateY(-50%)
+            .name
+              flex: 1 0 5%
+              padding-left: 10px
+        &.buttons
+          display: table-cell
+          .wrapper
+            display: flex
+            flex-flow: row wrap
+            align-items: center
+            .item
+              display: flex
+              flex-flow: row wrap
+              align-items: center
+              justify-content: flex-start
+              padding: 5px 10px
+              border-radius: 5px
+              box-shadow: 0 8px 20px -8px transparent
+              transition: .3s ease-in-out
+              &.primary
+                background-color: $primary
+                &:hover
+                  box-shadow: 0 8px 20px -8px $primary
+              &.secondary
+                background-color: $secondary
+                &:hover
+                  box-shadow: 0 8px 20px -8px $secondary
+              &.cancel
+                background-color: $cancel
+                &:hover
+                  box-shadow: 0 8px 20px -8px $cancel
+              &.info
+                background-color: $info
+                &:hover
+                  box-shadow: 0 8px 20px -8px $info
+              &.success
+                background-color: $success
+                &:hover
+                  box-shadow: 0 8px 20px -8px $success
+              &.ml
+                margin-left: 10px
+              .icon
+                path
+                  fill: $white
+              span
+                display: inline-block
+                padding-left: 5px
+                color: $white
+
+/**
+ * Layout */
+.box_parent
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  &.three_fifty
+    .box
+      &.left,
+      &.middle
+        flex: 0 0 19%
+      &.right
+        flex: 0 0 58%
+  &.three_seventy
+    .box
+      &.left
+        flex: 0 0 24%
+      &.right
+        flex: 0 0 74%
+  &.half
+    .box
+      &.left,
+      &.right
+        flex: 0 0 49%
+  &.full
+    .box
+      flex: 0 0 100%
+.box
+  padding: 20px
+  border-radius: 5px
+  background-color: $white
+  box-shadow: 0 0 30px transparentify($black, 0.1)
+  .top_box
+    padding-bottom: 20px
+    &.inline
+      display: flex
+      flex-flow: row wrap
+      align-items: center
+      justify-content: space-between
+    h2
+      brandon_medium(16px, true)
+      color: $gray
+    .description
+      padding-top: 10px
+      *
+        brandon_regular(16px, false)
+        color: $black
+      b
+        brandon_bold(16px, false)
+        color: $secondary
+        background-color: transparentify($secondary, 0.25)
+        padding: 0 5px 2.5px
+  .bottom_box
+    border-bottom: 2px solid $gray_v4
+    margin-bottom: 20px
+    &.scrollable
+      height: 100%
+      max-height: 600px
+      overflow-y: auto
+      overflow-x: hidden
+    &.pd
+      padding: 20px 0
+    &.npb
+      padding-bottom: 0
+    &:last-child
+      margin-bottom: 0
+      border-bottom: 2px solid transparent
+    .group_header
+      brandon_bold(14px, true)
+      color: $secondary
+      margin-bottom: 10px
+      &.inline
+        display: flex
+        flex-flow: row wrap
+        align-items: center
+        justify-content: space-between
+    .box_group
+      padding: 10px
+      box-shadow: 0 0 30px transparentify($black, 0.1)
+    .box_group_inline
+      display: flex
+      flex-flow: row wrap
+      align-items: center
+      justify-content: flex-start
+.box_inline
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  .box
+    flex: 0 0 calc(50% - 15px)
+
+/**
+ * Columns */
+.columns
+  margin: 0 -10px
+  .wrapper
+    display: flex
+    flex-flow: row wrap
+    align-items: flex-start
+    justify-content: flex-start
+    &.image
+      .column
+        padding: 0
+    &.four
+      .column
+        flex: 0 0 calc(25% - 20px)
+        margin: 0 10px 20px
+    .column
+      text-align: center
+      border: 2px solid $primary
+      padding: 30px
+      border-radius: 5px
+      transition: .3s ease-in-out
+      &:hover
+        background-color: $gray_v2
+      .title
+        brandon_medium(20px, false)
+        margin-top: 10px
+        color: $black
+      .count
+        brandon_bold(50px, true)
+        color: $primary
+      img
+        width: 100%
+        height: auto
+        border-radius: 5px
+
+/**
+ * Loader */
+.loader
+  position: fixed
+  top: 0
+  left: 0
+  bottom: 0
+  right: 0
+  z-index: 99955
+  background-color: transparentify($black, 0.2)
+  .wrapper
+    position: absolute
+    top: 50%
+    left: 0
+    right: 0
+    text-align: center
+    margin: 0 auto
+    width: 250px
+    transform: translateY(-50%)
+    .icon
+      margin-bottom: 10px
+    .dots
+      display: inline-block
+      position: relative
+      width: 80px
+      height: 80px
+      div
+        animation: rotate 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite
+        transform-origin: 40px 40px
+        &::after
+          content: " "
+          display: block
+          position: absolute
+          width: 7px
+          height: 7px
+          border-radius: 50%
+          background-color: $primary
+          margin: -4px 0 0 -4px
+        &:nth-child(1)
+          animation-delay: -0.036s
+          &::after
+            top: 63px
+            left: 63px
+        &:nth-child(2)
+          animation-delay: -0.072s
+          &::after
+            top: 68px
+            left: 56px
+        &:nth-child(3)
+          animation-delay: -0.108s
+          &::after
+            top: 71px
+            left: 48px
+        &:nth-child(4)
+          animation-delay: -0.144s
+          &::after
+            top: 72px
+            left: 40px
+        &:nth-child(5)
+          animation-delay: -0.18s
+          &::after
+            top: 71px
+            left: 32px
+        &:nth-child(6)
+          animation-delay: -0.216s
+          &::after
+            top: 68px
+            left: 24px
+        &:nth-child(7)
+          animation-delay: -0.252s
+          &::after
+            top: 63px
+            left: 17px
+        &:nth-child(8)
+          animation-delay: -0.288s
+          &::after
+            top: 56px
+            left: 12px
+
+#dialog
+  position: absolute
+  left: 0
+  z-index: 1024
+  &.overlap
+    z-index: 9999
+  &.centered
+    .wrapper
+      .content
+        top: 50%
+        transform: translateY(-50%)
+        animation: centered_slide 1s
+  .wrapper
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 1050
+    width: 100%
+    height: 100%
+    outline: 0
+    overflow-x: hidden
+    overflow-y: auto
+    .content
+      position: relative
+      z-index: 1041
+      width: auto
+      max-width: 600px
+      border-radius: 5px
+      margin: 0 auto
+      background-color: $white
+      box-shadow: 0 0 30px transparentify($black, 0.2)
+      transform: translateY(50px)
+      animation: basic_slide 1s
+      &.extended
+        max-width: 900px
+      &.secondary
+        .close
+          background-color: $secondary
+        .content_top
+          color: $secondary
+      &.success
+        .close
+          background-color: $success
+        .content_top
+          color: $success
+      &.cancel
+        .close
+          background-color: $cancel
+        .content_top
+          color: $cancel
+      &.warning
+        .close
+          background-color: $warning
+        .content_top
+          color: $warning
+      &.info
+        .close
+          background-color: $info
+        .content_top
+          color: $info
+      &.dark
+        .close
+          background-color: $gray
+        .content_top
+          color: $gray
+      .close
+        position: absolute
+        top: -3px
+        right: -3px
+        display: inline-block
+        padding: 5px 10px
+        opacity: 1
+        border-radius: 5px
+        brandon_regular(20px, false)
+        background-color: $primary
+        color: $white
+        box-shadow: 0 0 10px transparentify($black, 0.2)
+        z-index: 2
+        line-height: 1
+        transition: .3s ease-in-out
+        &:hover
+          top: -6px
+          right: -6px
+          transition: .3s ease-in-out
+      .content_top
+        border-radius: 5px 5px 0 0
+        background-color: transparentify($black, 0.05)
+        padding: 10px 20px
+        brandon_medium(20px, false)
+        color: $primary
+      .content_middle
+        padding: 10px 20px
+        brandon_light(16px, false)
+        color: $black
+        .disclaimer
+          .violator
+            brandon_light(16px, false)
+            color: $black
+      .content_bottom
+        border-top: 2px solid transparentify($black, 0.05)
+        text-align: right
+        padding: 10px 20px
+  .backdrop
+    position: fixed
+    top: 0
+    z-index: 1040
+    width: 100vw
+    height: 100vh
+    background-color: transparentify($black, 0.2)
+
+/**
+ * Forms */
+
+/**
+ * Switch */
+#switch
+  display: flex
+  flex-flow: row wrap
+  align-items: center
+  &.disabled
+    opacity: 0.5
+    pointer-events: none
+  &.cancel
+    label
+      background-color: $cancel
+      border: 2px solid $cancel
+      transition: .3s ease-in-out
+  &.toggled
+    &.secondary
+      label
+        background-color: $secondary
+        border: 2px solid $secondary
+        transition: .3s ease-in-out
+    &.success
+      label
+        background-color: $success
+        border: 2px solid $success
+        transition: .3s ease-in-out
+    &.warning
+      label
+        background-color: $warning
+        border: 2px solid $warning
+        transition: .3s ease-in-out
+    &.info
+      label
+        background-color: $info
+        border: 2px solid $info
+        transition: .3s ease-in-out
+    &.dark
+      label
+        background-color: $gray
+        border: 2px solid $gray
+        transition: .3s ease-in-out
+    label
+      background-color: $primary
+      border: 2px solid $primary
+      transition: .3s ease-in-out
+      &::before
+        left: calc(100% - 22px)
+        transition: .3s ease-in-out
+  label
+    cursor: pointer
+    position: relative
+    display: inline-block
+    width: 50px
+    height: 25px
+    background-color: $gray_v3
+    border: 2px solid $gray_v3
+    border-radius: 50px
+    transition: .3s ease-in-out
+    &::before
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      width: 22px
+      height: 100%
+      border-radius: 50%
+      background-color: $white
+      z-index: 0
+      transition: .3s ease-in-out
+  input
+    position: absolute
+    left: 0
+    z-index: -1
+    opacity: 0
+    visibility: hidden
+  span
+    display: inline-block
+    padding-left: 7.5px
+    brandon_regular(14px, true)
+    color: $gray
+/**
+ * Input */
+.form_group
+  #input
+    display: block
+    width: 100%
+
+.fade
+  animation: fade 1s
+
+@keyframes fade
+  0% {
+    opacity: 0
+  }
+  100% {
+    opacity: 1
+  }
+
+@keyframes rotate
+  0% {
+    transform: rotate(0deg)
+  }
+  100% {
+    transform: rotate(360deg)
+  }
+
+@keyframes basic_slide
+  from {
+    opacity: 0
+    transform: translateY(0)
+  }
+  to {
+    opacity: 1
+    transform: translateY(50px)
+  }
+
+@keyframes centered_slide
+  from {
+    opacity: 0
+    transform: translateY(-100%)
+  }
+  to {
+    opacity: 1
+    transform: translateY(-50%)
+  }
+
+@keyframes right_slide
+  from {
+    opacity: 0
+    transform: translateX(100px)
+  }
+  to {
+    opacity: 1
+    transform: translateX(0)
+  }
+
+@keyframes filter_slide
+  from {
+    opacity: 0
+    transform: translateX(450px)
+  }
+  to {
+    opacity: 1
+    transform: translateX(0)
+  }
+
+.page-enter-active,
+.page-leave-active
+  transition: all .3s ease-in-out
+
+.page-enter,
+.page-leave-to
+  opacity: 0
+
+.fade-enter-active,
+.fade-leave-active
+  transition: all .3s ease-in-out
+
+.fade-enter,
+.fade-leave-to
+  opacity: 0
+
+.right_slide-enter-active,
+.right_slide-leave-active
+  transition: all .3s ease-in-out
+
+.right_slide-enter,
+.right_slide-leave-to
+  opacity: 0
+  transform: translateX(100px)
+
+.slide-enter-active,
+.slide-leave-active
+  transition: all .2s ease-in-out
+
+.slide-enter,
+.slide-leave-to
+  opacity: 0
+  transform: translateY(-20px)

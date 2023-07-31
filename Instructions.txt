@@ -1,0 +1,18 @@
+*API
+-Composer install
+-php artisan passport:install
+-No need to migrate just upload the given .sql file
+
+*CMS
+-npm install
+-Generate .env and connect the api
+
+Example account 
+
+Admin
+user: admin@admin.com
+pass: password
+
+User
+user: markangeloterante@gmail.com
+pass: password
